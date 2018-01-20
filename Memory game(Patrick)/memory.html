@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" href="folder/cardback.jpg">
+<title>Memory Game</title>
+<style>
+
+div#container div{
+    width: 110px;
+    height: 170px;
+    background:url(folder/cardback.jpg);
+    margin: 5px 5px 5px 5px;
+    display: inline-block;
+    background-size:cover;
+    }    
+#container{
+    margin:auto;
+    display: block;
+    width: 1000px;
+    margin-top: 30px;
+}
+#container > div >img{
+        width: 110px;
+        height: 170px;
+        margin: 0px;
+        display:none;
+    }
+ #pontuacao {
+    background:rgba(5,7,9,.8);
+    position: fixed;
+    margin: -10px auto;
+    padding: 10px 20px 10px 20px;
+    width:94%;
+    }
+#pontuacao img{
+        width: 310px;
+        display: block;
+        margin: auto;
+        margin-top: -90px;
+    }    
+    
+    
+    #pontuacao > p{
+    color:antiquewhite;
+    font-size: 14pt;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 1px 1px 3px grey; 
+        
+    }
+
+    p{
+        display: inline-block;
+    }
+    #tempop{
+        float: right;
+    }
+    #center{
+        text-align: center;
+        display: block;
+        margin-top: -45px;
+        font-size: 25px!important;
+    }
+    #fimdejogo{
+        position: fixed;
+        margin: auto;
+        width: 98%;
+        height: 100%;
+        display: none;
+        color:cornsilk;
+        background: rgba(5, 7, 9,.8);
+        text-align: center;
+        font-family: cursive;
+        text-shadow: 2px 2px 3px grey;
+        font-size: 18pt;
+        
+    }
+    #fimdejogo > button{
+    background-color:black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px 5px 5px 5px;
+    transition: background-color 1.05s ease-in-out;
+    }
+    
+    #fimdejogo > button:hover{
+        background-color:dimgrey;
+        transform: scale(1.2);
+        
+    }
+    
+     div#perdeu > button{
+    background-color:rgba(0,0,0,.8);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    border-radius: 5px 5px 5px 5px;
+    transition: background-color 1.05s ease-in-out;
+         
+    }
+    div#perdeu button:hover{
+        background-color:black ;
+        transform: scale(1.05);
+        
+    }
+.bg_video{
+        
+ position: fixed; 
+ right: 0; 
+ bottom: 0;
+ min-width: 100%; 
+ min-height: 100%;
+ width: auto; 
+ height: auto; 
+ z-index: -1000;
+ background: url(folder/background2.jpg) no-repeat;
+ background-size: cover; 
+}
+ 
+    
+    #btn-volume{
+        width: 70px;
+        float: right;
+        margin-top: -25px;
+    }
+
+</style>    
+    <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+<video autoplay loop poster="folder/background2.jpg" class="bg_video">
+
+ <source src="folder/galaxy-magic.mp4" type="video/mp4">
+</video>     
+
+    <div id="pontuacao">
+        <p>Jogadas:<span id="pontos"></span></p>
+        <p id="tempop"> <span id="tempo"></span></p>
+        <img src="folder/memory-logo.png" id="center">
+    
+    </div>  
+      
+      <div style="height:80px">
+      </div>  
+<div id="fimdejogo">
+    <h1>Você completou o jogo</h1>
+    <img style="width:160px" src="folder/FINALIZADO.png">
+    <br>
+    <p id="info"></p>
+    <br>
+    <p id="time"></p>
+    <br>
+    <button type="submit" onClick="Atualizar()">Jogar Novamente</button>
+    
+</div>  
+         
+  <div id="container">
+    
+      
+    <div onclick="cartaClick('1')" id="1">
+    <img id="c1"  src="">
+    </div>
+    <div onclick="cartaClick('2')" id="2">
+        <img id="c2"  src="">
+    </div>
+    <div onclick="cartaClick('3')" id="3">
+        <img id="c3"  src="">
+    </div>
+    <div onclick="cartaClick('4')" id="4">
+        <img id="c4"  src="">
+    </div>
+    <div onclick="cartaClick('5')" id="5">
+        <img id="c5"  src="">
+    </div>
+    <div onclick="cartaClick('6')" id="6">
+        <img id="c6"  src="">
+    </div>
+    <div onclick="cartaClick('7')" id="7">
+        <img id="c7"  src="">
+    </div>
+    <div onclick="cartaClick('8')" id="8">
+        <img id="c8"  src="">
+    </div>
+    <div onclick="cartaClick('9')" id="9">
+        <img id="c9"  src="">
+    </div>
+    <div onclick="cartaClick('10')"id="10">
+        <img id="c10"  src="">
+    </div>
+    <div onclick="cartaClick('11')" id="11">
+        <img id="c11"  src="">
+    </div>
+    <div onclick="cartaClick('12')" id="12">
+        <img id="c12"  src="">
+    </div>
+    <div onclick="cartaClick('13')" id="13">
+        <img id="c13"  src="">
+    </div>
+    <div onclick="cartaClick('14')" id="14">
+        <img id="c14"  src="">
+    </div>
+    <div onclick="cartaClick('15')" id="15">
+        <img id="c15"  src="">
+    </div>
+    <div onclick="cartaClick('16')" id="16">
+        <img id="c16"  src="">
+    </div>
+    <div onclick="cartaClick('17')" id="17">
+        <img id="c17"  src="">
+    </div>
+    <div onclick="cartaClick('18')" id="18">
+        <img id="c18"  src="">
+    </div>
+    <div onclick="cartaClick('19')" id="19">
+        <img id="c19"  src="">
+    </div>
+    <div onclick="cartaClick('20')" id="20">
+        <img id="c20"  src="">
+    </div>
+    <div onclick="cartaClick('21')" id="21">
+        <img id="c21"  src="">
+    </div>
+    <div onclick="cartaClick('22')" id="22">
+        <img id="c22"  src="">
+    </div>
+    <div onclick="cartaClick('23')" id="23">
+        <img id="c23"  src="">
+    </div>
+    <div onclick="cartaClick('24')" id="24">
+        <img id="c24"  src="">
+    </div>
+      
+ 
+      
+      <script src="memory.JS"></script>
+
+    
+      
+      
+   
+    
+</div>
+     
+    
+    
+      <div id="perdeu" style="width:150px;margin:auto;display:block">
+   <button id="btn" type="button" onclick="acabou()">Desistir</button>
+   <button id="btn2" style="display:none" type="submit" onClick="Atualizar()">Jogar Novamente</button>
+          
+        
+   </div>
+ <img id="btn-volume" src="folder/volume.png" onClick="som()">
+    
+ <audio id="musica" controls autoplay loop style="display:none">
+  <source src="folder/trilha.mp3" type="audio/mpeg">
+</audio>
+<audio id="musica2" style="display:none">
+
+  <source src="folder/click.wav" type="audio/mpeg">
+</audio>
+
+<audio id="musica3" style="display:none">
+  <source src="folder/sucessful.wav" type="audio/mpeg">
+
+</audio> 
+<audio id="musica4" style="display:none">
+  <source src="folder/completed.wav" type="audio/mpeg">
+
+</audio> 
+<audio id="musica5" loop style="display:none">
+  <source src="folder/perdeu.mp3" type="audio/mpeg">
+
+</audio>        
+    
+
+    <h2 style="text-align:center;color:#e1eaef;font-weight:bold;margin-top:100px">Developed and programmed by Patrick de Souza</h2>      
+<script>
+    var aud = document.getElementById("musica");
+aud.volume= 0.03;    
+var aud2 = document.getElementById("musica2");
+aud2.volume= 0.035; 
+var aud3 = document.getElementById("musica3");
+aud3.volume= 0.01;
+var aud4 = document.getElementById("musica4");
+aud4.volume= 0.3; 
+var aud5 = document.getElementById("musica5");
+aud5.volume= 0.3;
+
+</script>
+    
+</body>    
+
+</html>
